@@ -6,7 +6,7 @@ def get_lines(filename='08/input.txt'):
 result = 0
 
 for string in get_lines():
-    result += len(string) + 2
-    result -= len(string.encode('utf-8').decode('unicode_escape'))    
+    result += len(string)
+    result -= len(string.encode('utf-8').decode('unicode_escape')) - 2
 
 print(result)
