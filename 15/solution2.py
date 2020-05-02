@@ -1,6 +1,6 @@
 import itertools
 import functools
-from tqdm import tqdm
+
 
 class Ingredient:
     def __init__(self, capacity, durability, flavor, texture, calories):
@@ -72,7 +72,7 @@ ingredients = get_ingredients()
 room = 100
 current_max = 0
 
-for number_split in tqdm(get_all_splits(room, len(ingredients))):
+for number_split in get_all_splits(room, len(ingredients)):
     quantitied_ingredients = list(map(
         lambda p: p[0] * p[1],
         zip(ingredients, number_split)
@@ -80,9 +80,6 @@ for number_split in tqdm(get_all_splits(room, len(ingredients))):
     bowl = quantitied_ingredients[0]
     for ingredient in quantitied_ingredients[1:]:
         bowl += ingredient
-
-    if bowl.calories != 500:
-        continue
 
     current_max = max(current_max, bowl.score())
 
